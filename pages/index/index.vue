@@ -3,14 +3,17 @@
 		<u-swiper :list="list2" keyName="image" showTitle :autoplay="true" circular :height="200"></u-swiper>
 		<view>
 			<u-grid :border="false" @click="click">
-				<u-grid-item v-for="(baseListItem,baseListIndex) in baseList" :key="baseListIndex">
-					<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="baseListItem.name" :size="22"></u-icon>
+				<u-grid-item v-for="(baseListItem,baseListIndex) in baseList" :key="baseListIndex"
+					:name="baseListItem.name">
+					<u-image :showLoading="true" :src="baseListItem.src" width="55px" height="45px"></u-image>
+					<!-- <u-icon :customStyle="{paddingTop:20+'rpx'}" :name="baseListItem.name" :size="22"></u-icon> -->
 					<text class="grid-text">{{baseListItem.title}}</text>
 				</u-grid-item>
 			</u-grid>
 			<u-toast ref="uToast" />
 		</view>
-		<u-image :showLoading="true" src='https://cdn.uviewui.com/uview/album/1.jpg' width="80px" height="80px" @click="click"></u-image>
+		<u-image class="img-class" src="https://images--typora.oss-cn-guangzhou.aliyuncs.com/下载.jpeg" width="440px"
+			height="300px"></u-image>
 	</view>
 
 </template>
@@ -20,44 +23,75 @@
 		data() {
 			return {
 				list2: [{
-					image: 'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-					title: '昨夜星辰昨夜风，画楼西畔桂堂东',
+					image: 'https://img1.dxycdn.com/2019/0910/002/3367478239575747059-15.jpg',
+					title: '睡觉时身体猛然抖一下，是大病的征兆？',
 				}, {
-					image: 'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-					title: '身无彩凤双飞翼，心有灵犀一点通'
+					image: 'https://img1.dxycdn.com/2021/0630/407/0159159096690479843-22.jpg',
+					title: '睡很久，为何还是犯困？'
 				}, {
-					image: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-					title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
+					image: 'http://img.dxycdn.com/dotcom/2015/07/13/19/fwiz1hzf.jpg',
+					title: '多梦怎么办？6 招助你进入深度睡眠'
 				}],
 				baseList: [{
-						name: 'photo',
-						title: '图片'
+						src: "https://images--typora.oss-cn-guangzhou.aliyuncs.com/yygh.jpg",
+						name: 'yygh',
+						title: '预约挂号'
 					},
 					{
-						name: 'lock',
-						title: '锁头'
+						src: "https://images--typora.oss-cn-guangzhou.aliyuncs.com/20220423015808.png",
+						name: 'kscx',
+						title: '科室查询'
 					},
 					{
-						name: 'star',
-						title: '星星'
+						src: "https://images--typora.oss-cn-guangzhou.aliyuncs.com/wdda.jpg",
+						name: 'wdda',
+						title: '我的档案'
 					}, {
-						name: 'photo',
-						title: '图片'
+						src: "https://images--typora.oss-cn-guangzhou.aliyuncs.com/ghjl.jpg",
+						name: 'ghjl',
+						title: '挂号记录'
 					},
 					{
-						name: 'lock',
-						title: '锁头'
+						src: "https://images--typora.oss-cn-guangzhou.aliyuncs.com/jfjl.jpg",
+						name: 'jfjl',
+						title: '缴费记录'
+					}, {
+						src: 'https://images--typora.oss-cn-guangzhou.aliyuncs.com/bgcx.jpg',
+						name: 'bgjl',
+						title: '报告记录'
 					},
 					{
-						name: 'star',
-						title: '星星'
+						src: 'https://images--typora.oss-cn-guangzhou.aliyuncs.com/20220423022020.png',
+						name: 'jzjl',
+						title: '就诊记录'
+					},
+					{
+						name: 'yszy',
+						title: '医生主页(test)'
 					},
 				]
 			}
 		},
 		methods: {
 			click(name) {
-				this.$refs.uToast.success(`点击了第${name}个`)
+				if (name == 'yygh') {
+					uni.$u.route('/pages/kslb/kslb');
+				}
+				if (name == 'kscx') {
+					uni.$u.route('/pages/kscx/kscx');
+				}
+				if (name == 'wdda') {
+					uni.$u.route('/pages/wdda/wdda');
+				}
+				if (name == 'ghjl') {
+					uni.$u.route('/pages/ghjl/ghjl');
+				}
+				if (name == 'jfjl') {
+					uni.$u.route('/pages/jfjl/jfjl');
+				}
+				if (name == 'yszy') {
+					uni.$u.route('/pages/yszy/yszy');
+				}
 			}
 		}
 	}
@@ -71,5 +105,8 @@
 		/* #ifndef APP-PLUS */
 		box-sizing: border-box;
 		/* #endif */
+	}
+	.img-class{
+		margin-top: 90rpx;
 	}
 </style>
